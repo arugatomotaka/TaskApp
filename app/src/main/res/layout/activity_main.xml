@@ -7,41 +7,49 @@
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <ListView
-        android:id="@+id/listView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="16dp"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/category_search"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="カテゴリーを入力してください"
-            android:textSize="18sp" />
+            android:layout_alignParentBottom="true"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/search_button"
+            <EditText
+                android:id="@+id/category_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="カテゴリーを入力してください"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/search_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="検索" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:src="@drawable/plus"
+                app:backgroundTint="?attr/colorPrimary"
+                app:tint="@color/white"
+                tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="検索" />
+            android:layout_height="match_parent"
+            android:layout_above="@id/linearLayout" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:src="@drawable/plus"
-            app:backgroundTint="?attr/colorPrimary"
-            app:tint="@color/white"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

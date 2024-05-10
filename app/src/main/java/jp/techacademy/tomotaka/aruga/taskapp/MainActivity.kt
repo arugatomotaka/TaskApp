@@ -158,10 +158,7 @@ class MainActivity : AppCompatActivity() {
             if(inputText.isNotEmpty()){
 
                 val tasks = realm.query<Task>("category == $0", inputText).find()
-                //val tasks = realm.where(Task::class.java).equalTo("title", inputText).findAll()
-//                realm.writeBlocking{
-//                  val tasks =  this.query<Task>("category == $0", inputText).find()
-//                }
+
                 // TaskAdapterに検索結果のタスクをセット
                 if (tasks.isNotEmpty()) {
                     taskAdapter.updateTaskList(tasks)
@@ -172,7 +169,14 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }else{
-                Toast.makeText(this, "先にカテゴリーを入力してください", Toast.LENGTH_LONG).show()
+
+                //全てのTaskオブジェクトを検索
+                val tasks = realm.query<Task>().find()
+
+                taskAdapter.updateTaskList(tasks)
+                // ListViewにアダプターをセット
+                binding.listView.adapter = taskAdapter
+
             }
         }
 
